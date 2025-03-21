@@ -6,7 +6,7 @@ app = Flask(__name__)  # Corrected __name__
 CORS(app)  # Allow frontend to communicate with backend
 
 # Replace with your actual Cohere API key
-COHERE_API_KEY = "yP0b4i30jEeSLp6OIHiWsKv0KG1Xcn3BBBxFbg0k"
+COHERE_API_KEY = "******************************"
 co = cohere.Client(COHERE_API_KEY)
 
 @app.route("/chat", methods=["POST"])

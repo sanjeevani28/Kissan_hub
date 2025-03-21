@@ -1,0 +1,405 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIN {
+    0% {
+        transform: translateY(-100);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.box {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity 1s, transform 1s;
+  }
+  
+  .box.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+
+.slide-in {
+    animation: slideIn 1s ease-in-out;
+}
+
+
+.bounce:hover {
+    animation: bounce 0.5s
+    ease-in-out infinite;
+}
+
+.rotate:hover {
+    animation: rotate 1s linear infinite;
+}
+
+.fade-in {
+    animation: fadeIn 4s ease-in-out;
+}
+
+.home-page {
+    background-image: url('https://drive.google.com/thumbnail?id=1iqS0yz_882wL2aod9Cd0rTtB76J1dZJb');
+    background-size: cover;
+    height: 100vh;
+    text-align: center;
+}
+
+.banner-heading {
+    text-align: center;
+    font-family: Playfair Display;
+    font-size: 70px;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.soil-section {
+    background-color: #FFFCF1;
+}
+
+.finance-section {
+    background-color: #E8F5E9;
+}
+
+.b2c-section {
+    background-color: #FDFDF6;
+}
+
+.moisture-section {
+    background-color: #EAF4E1;
+}
+
+.soil-section-heading {
+    font-family: Bree Serif;
+    font-size: 30px;
+    color: black;
+}
+
+.soil-section-description {
+    font-family: Roboto;
+    font-size: 20px;
+    color: gray;
+}
+
+.soil-section-description-span {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.agri-card {
+    background-color: white;
+    text-align: center;
+    border-radius: 20px;
+    width: 320px;
+}
+
+.agri-card-heading {
+    font-family: Roboto;
+    font-size: 22px;
+    color: #8B4513;
+}
+
+.agri-card-description {
+    font-family: Roboto;
+    font-size: 16px;
+    color: #666666;
+}
+
+.stock-ticker {
+    display: flex;
+    --gap: 20px;
+    gap: var(--gap);
+    overflow: hidden;
+    user-select: none;
+}
+
+
+.stock-ticker ul{
+    list-style: none;
+    display: flex;
+    flex-shrink: 0;
+    min-width: 100%;
+    justify-content: space-between;
+    gap: var(--gap);
+    align-items: center;
+
+    animation: scroll 20s linear infinite;
+}
+
+.stock-ticker:hover ul {
+    animation-play-state: running;
+    transform: scale(1.05);
+    
+    
+}
+
+@keyframes scroll {
+    to {
+        transform: translateX(calc(-100% - var(--gap)));
+    }
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.nav-tabs {
+    justify-content: center;
+}
+
+.nav-link {
+    cursor: pointer;
+    font-size: 30px;
+}
+
+body {
+    background-color: #808000;
+    background-image: linear-gradient(to right, #FFFACD, #98FB98)
+}
+
+.container1 {
+    background-color: #fff;
+    width: 450px;
+    padding: 1.5rem;
+    margin: 50px auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0,0,1,0.9);
+}
+
+form {
+    margin: 0.2 rem;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1.3rem;
+    margin-bottom: 0.4rem;
+}
+
+input {
+    color: inherit;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #757575;
+    padding-left: 1.5rem;
+    font-size: 15px;
+}
+
+.input-group {
+    padding: 1% 0;
+    position: relative;
+}
+
+.input-group i{
+    position: absolute;
+    color: black;
+}
+
+.input:focus {
+    background-color: transparent;
+    outline: transparent;
+    border-bottom: 2px solid hsl(327, 90%, 28%);
+}
+
+.input::placeholder {
+    color: transparent;
+    font-size: inherit;
+}
+
+label {
+    color: #757575;
+    position: relative;
+    font-size: 15px;
+    left: 1.69em;
+    top: -1.68em;
+    cursor: auto;
+    transition: 0.3s ease all;
+}
+
+input:focus~label,input:not(:placeholder-shown)~label {
+    top: -3em;
+    color: hsl(327, 90%, 28%);
+    font-size: 16px;
+}
+
+.recover {
+    text-align: right;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.recover a{
+    text-decoration: none;
+    color: rgb(125,125,235);
+}
+
+.recover a:hover{
+    color: blue;
+    text-decoration: underline;
+}
+
+.button {
+    font-size: 1.1rem;
+    padding: 8px 0;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    width: 25%;
+    background-color: #32CD32;
+    color: white;
+    cursor: pointer;
+    transition: 0.9s;
+}
+
+.button:hover {
+    background-color: #006400;
+}
+
+.or {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.icons {
+    text-align: center;
+}
+
+.icons i{
+    color: yellowgreen;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid yellowgreen;
+    margin: 0 15px;
+    transition: 1s;
+}
+
+.icons i:hover {
+    background: #006400;
+    font-size: 1.6rem;
+    border: 2px solid #006400;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.4rem;
+    font-size: 1rem;
+    margin-top: 0.9rem;
+    font-weight: bold;
+}
+
+button {
+    color: rgb(125,125,235);
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button:hover {
+    text-decoration: underline;
+    color: blue;
+
+}
+
+.farmer-home-page {
+    background-image: url('https://drive.google.com/thumbnail?id=1iqS0yz_882wL2aod9Cd0rTtB76J1dZJb');
+    background-size: cover;
+    text-align: center;
+    align-items: center;
+}
+
+.farmer-banner-heading {
+    text-align: center;
+    font-family: Playfair Display;
+    font-size: 70px;
+    font-weight: bold;
+    color: aliceblue;
+}
+
+.farmer-card {
+    background: linear-gradient(to right, #B4E7B8, #F2FFFB);
+    text-align: center;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+}
+
+.farmer-card-heading {
+    font-family: 'Merriweather', serif;
+    font-size: 22px;
+    color: #8B4513;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.farmer-card-description {
+    font-family: open sans;
+    font-size: 16px;
+    color: #666666;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.farmer-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow for a 3D effect */
+    background: linear-gradient(to right, #F2FFFB, #B4E7B8); /* Reverse the gradient effect for a smooth hover transition */
+}
+
+.farmer-card:hover .farmer-card-heading {
+    transform: translateY(-3px); /* Move the heading up */
+    font-weight: bold; /* Change the heading color to gold on hover */
+}
+
+.farmer-card:hover .farmer-card-description {
+    transform: translateY(3px); /* Slightly move the description text down */
+    opacity: 0.8; /* Slightly fade the description */
+}
+
+.btn-info {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.farmer-card:hover .btn-info {
+    background-color: rgb(23, 95, 250); /* Change the button color */
+    transform: translateY(5px); /* Move the button down slightly */
+}

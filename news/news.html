@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Government Schemes & Subsidies</title>
+    <link rel="stylesheet" href="news.css">
+    <style>
+        body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZmFybXxlbnwwfHwwfHw%3D&w=1080') fixed;
+    background-size: cover;
+    min-height: 100vh;
+    position: relative;
+    padding: 20px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(168, 230, 207, 0.95), rgba(160, 196, 255, 0.95));
+    z-index: -1;
+}
+
+
+
+h1 {
+    text-align: center;
+    color: #2c5282;
+    font-size: 2.5em;
+    margin: 2rem 0;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInDown 1s ease-out;
+}
+
+.scheme-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: slideUp 0.5s ease-out;
+}
+
+.scheme-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #48bb78, #38b2ac);
+}
+
+.scheme-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.scheme-card h2 {
+    color: #2d3748;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.scheme-card p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.scheme-card a {
+    color: #48bb78;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.scheme-card a:hover {
+    color: #38a169;
+}
+
+.scheme-card button {
+    background: #48bb78;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.scheme-card button:hover {
+    background: #38a169;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+.more-text {
+    display: none;
+}
+
+/* Animations */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .scheme-card {
+        padding: 1.5rem;
+    }
+
+    .scheme-card h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Add different background colors for alternating cards */
+.scheme-card:nth-child(4n+1) {
+    background: linear-gradient(145deg, #ffffff, #f0f7ff);
+}
+
+.scheme-card:nth-child(4n+2) {
+    background: linear-gradient(145deg, #ffffff, #f0fff4);
+}
+
+.scheme-card:nth-child(4n+3) {
+    background: linear-gradient(145deg, #ffffff, #fff5f5);
+}
+
+.scheme-card:nth-child(4n+4) {
+    background: linear-gradient(145deg, #ffffff, #faf5ff);
+}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-transperent">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav text-dark ml-auto">
+                <a class="nav-link active text-dark" href="../farmer.php">Home <span class="sr-only">(current)</span></a>
+            </div>
+        </div>
+    </nav>
+
+    
+        <h1>Government Schemes & Subsidies</h1>
+    
+    
+    <div class="container">
+        <div class="row"> 
+            <div class="col-12">
+                <div class="scheme-card">
+                    <h2>Agriculture Infrastructure Fund</h2>
+                    <p>
+                        Financing facility of Rs. 1,00,000 crore will be provided for 
+                        funding Agriculture Infrastructure Projects at farm-gate & 
+                        aggregation points
+                        <span class="more-text">(Primary Agricultural Cooperative Societies, 
+                            Farmers Producer Organizations, Agriculture entrepreneurs, Start-ups, etc.).</span>
+                    </p>
+                    <a href="javascript:void(0);" onclick="toggleText(this)">Read More</a>
+                    <div>
+                        <a href="https://agriinfra.dac.gov.in/" target="_blank"><button>Learn More</button></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-12">
+                <div class="scheme-card">
+                    <h2>PM-Kisan Samman Nidhi</h2>
+                    <p>PM Kisan is a Central Sector scheme with 100% funding from Government of India.
+                        Under the scheme an income support of 6,000/- 
+                        <span class="more-text">State Government and UT administration will 
+                            identify the farmer families which are eligible for support as per 
+                            scheme guidelines. per year in three equal 
+                            installments will be provided to all land holding farmer families.</span>
+                    </p>
+                    <a href="javascript:void(0);" onclick="toggleText(this)">Read More</a>
+                    <div>
+                        <a href="https://pmkisan.gov.in/" target="_blank"><button>Learn More</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="scheme-card">
+                    <h2>Krishi UDAN scheme</h2>
+                    <p>The scheme aims to ensure seamless, cost-effective, time-bound air 
+                        transportation and associated logistics for all Agri-produce originating 
+                        especially from Northeast, hilly and tribal regions of the country. 
+                        <span class="more-text">The enhanced version of the Krishi UDAN scheme 
+                            was formulated with support from AAI Cargo Logistics and Allied Services 
+                            Company Limited (AAICLAS) - a 100% subsidiary of the Airports Authority 
+                            of India and Invest India, India’s national Investment Promotion & 
+                            Facilitation Agency, under the Ministry of Commerce and Industry.</span>
+                    </p>
+                    <a href="javascript:void(0);" onclick="toggleText(this)">Read More</a>
+                    <div>
+                        <a href="https://www.civilaviation.gov.in/" target="_blank"><button>Learn More</button></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="scheme-card">
+                    <h2>Crop insurance schemes</h2>
+                    <p>Four insurance schemes are being implemented namely by the government to support farmers.
+
+                        Pradhan Mantri Fasal Bima Yojana (PMFBY)
+                        Weather based Crop Insurance Scheme (WBCIS)
+                        Coconut Palm insurance scheme (CPIS) and
+                        Pilot Unified Package insurance scheme UPIS) (45 districts).
+                        <span class="more-text">The enhanced version of the Krishi UDAN scheme 
+                            was formulated with support from AAI Cargo Logistics and Allied Services 
+                            Company Limited (AAICLAS) - a 100% subsidiary of the Airports Authority 
+                            of India and Invest India, India’s national Investment Promotion & 
+                            Facilitation Agency, under the Ministry of Commerce and Industry.</span>
+                    </p>
+                    <a href="javascript:void(0);" onclick="toggleText(this)">Read More</a>
+                    <div>
+                        <a href="https://www.civilaviation.gov.in/" target="_blank"><button>Learn More</button></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        function toggleText(element) {
+            let moreText = element.previousElementSibling.querySelector('.more-text');
+            if (moreText.style.display === "none" || moreText.style.display === "") {
+                moreText.style.display = "inline";
+                element.textContent = "Read Less";
+            } else {
+                moreText.style.display = "none";
+                element.textContent = "Read More";
+            }
+        }
+    </script>
+</body>
+</html>

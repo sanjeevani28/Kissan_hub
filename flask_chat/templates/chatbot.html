@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Assistant Chatbot</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #chat-container {
+            width: 400px;
+            height: 500px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #chat-header {
+            background: #28a745;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        #chat-box {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .user-message, .bot-message {
+            padding: 10px 15px;
+            border-radius: 8px;
+            max-width: 75%;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            background: #28a745;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .bot-message {
+            background: #e9ecef;
+            color: black;
+            align-self: flex-start;
+        }
+
+        #chat-footer {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        #chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        #send-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #send-btn i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="chat-container">
+        <div id="chat-header">Farmer Assistant Chatbot</div>
+        <div id="chat-box"></div>
+        <div id="chat-footer">
+            <input type="text" id="chat-input" placeholder="Type your message...">
+            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("send-btn").addEventListener("click", sendMessage);
+        document.getElementById("chat-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            let inputField = document.getElementById("chat-input");
+            let message = inputField.value.trim();
+            if (message === "") return;
+
+            appendMessage("You", message, "user-message");
+            inputField.value = "";
+
+            fetch("http://127.0.0.1:5000/chat", { // Make sure Flask is running on this URL
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Server error");
+                }
+                return response.json();
+            })
+            .then(data => {
+                appendMessage("AI", data.response, "bot-message");
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                appendMessage("AI", "Error connecting to server. Please try again.", "bot-message");
+            });
+        }
+
+        function appendMessage(sender, text, className) {
+            let chatBox = document.getElementById("chat-box");
+            let messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+
+            let messageText = document.createElement("div");
+            messageText.classList.add(className);
+            messageText.textContent = text;
+
+            messageDiv.appendChild(messageText);
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script>
+
+</body>
+</html>

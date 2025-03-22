@@ -1,7 +1,6 @@
 function fetchProducts() {
     fetch('fetch_products.php')
         .then(response => {
-            // Check if the response is ok
             if (!response.ok) {
                 console.error('Network response was not ok');
                 throw new Error('Network response was not ok');

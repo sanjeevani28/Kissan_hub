@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['farmer_id'])) {
-    header("Location: login.php"); // Redirect to login page if not logged in
+    header("Location: login.php");
     exit();
 }
 ?>
@@ -227,7 +227,6 @@ button:hover {
         animation: cardPopIn 0.5s ease-out forwards;
     }
 
-    /* Add different background colors for alternating cards */
     .product-card:nth-child(4n+1) {
         background: linear-gradient(145deg, #ffffff, #f0f7ff);
     }
@@ -287,7 +286,6 @@ button:hover {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
@@ -335,7 +333,6 @@ button:hover {
             </ul>
         </div>
 
-        <!-- Add Product Form -->
         <div id="add-product" class="tab-content">
             <h3>Add Product</h3>
             <form id="productForm" method="post" action="add_product.php">
@@ -348,7 +345,6 @@ button:hover {
             </form>
         </div>
 
-        <!-- See Your Products Section -->
         <div id="see-products" class="tab-content">
             <h3>Your Products</h3>
             <div id="productList"></div>

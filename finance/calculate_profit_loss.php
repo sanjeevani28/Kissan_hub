@@ -2,7 +2,7 @@
 session_start();
 $conn = new mysqli("localhost", "root", "", "login");
 
-$farmer_id = $_SESSION['farmer_id']; // Get farmer ID dynamically
+$farmer_id = $_SESSION['farmer_id']; 
 
 $result = $conn->query("SELECT SUM(CASE WHEN type='earned' THEN amount ELSE -amount END) AS balance FROM transactions 
                                 WHERE farmer_id= $farmer_id");

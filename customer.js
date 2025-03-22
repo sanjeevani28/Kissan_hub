@@ -9,14 +9,14 @@ function fetchProducts() {
             return response.json();
         })
         .then(data => {
-            console.log('Data fetched:', data);  // Debugging: Check the data returned from PHP
-            let productList = document.getElementById('productList'); // Correct ID here
-            productList.innerHTML = ''; // Clear previous content
+            console.log('Data fetched:', data);
+            let productList = document.getElementById('productList');
+            productList.innerHTML = '';
 
             if (data.products && data.products.length > 0) {
                 data.products.forEach(product => {
                     let productDiv = document.createElement('div');
-                    productDiv.classList.add('col-md-4', 'mb-4'); // Bootstrap grid classes for responsiveness
+                    productDiv.classList.add('col-md-4', 'mb-4');
                     productDiv.innerHTML = `
                         <div class="card shadow-sm border-light rounded">
                             <div class="card-body">

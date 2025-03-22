@@ -1,14 +1,11 @@
-// Detect when the element is in and out of the viewport
 const boxes = document.querySelectorAll('.box');
 
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // When the element enters the viewport, add the 'visible' class
       entry.target.classList.add('visible');
       entry.target.classList.remove('hidden');
     } else {
-      // When the element exits the viewport, add the 'hidden' class
       entry.target.classList.add('hidden');
       entry.target.classList.remove('visible');
     }
@@ -19,17 +16,13 @@ boxes.forEach(box => {
   observer.observe(box);
 });
 
-// Function to toggle between customer and farmer login forms
 function showForm(formType) {
-  // Hide both forms by default
   document.getElementById('customer').style.display = 'none';
   document.getElementById('farmer').style.display = 'none';
 
-  // Remove 'active' class from both tabs
   document.getElementById('customer-tab').classList.remove('active');
   document.getElementById('farmer-tab').classList.remove('active');
 
-  // Show the selected form and set the correct tab as active
   if (formType === 'customer') {
       document.getElementById('customer').style.display = 'block';
       document.getElementById('customer-tab').classList.add('active');
@@ -40,16 +33,13 @@ function showForm(formType) {
   }
 }
 
-// Set default form to be visible (Customer login form)
 showForm('customer');
 
-//navigate to login page from home page
 function goToLoginPage() {
-  document.getElementById("homepage").style.display = "none"; // Hide homepage
-  document.getElementById("loginpage").style.display = "block"; // Show login page
+  document.getElementById("homepage").style.display = "none";
+  document.getElementById("loginpage").style.display = "block";
 }
 
-//toggle between sign up and sign in page for both farmer and customer
 
 const CsignupButton=document.getElementById('CsignupButton')
 const FsignupButton=document.getElementById('FsignupButton')

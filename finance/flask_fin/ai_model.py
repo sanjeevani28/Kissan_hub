@@ -5,25 +5,20 @@ import cohere
 from dotenv import load_dotenv
 from flask_cors import CORS  
 
-# Load environment variables
 load_dotenv()
 COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 
-# Validate API key
 if not COHERE_API_KEY:
     raise ValueError("Cohere API key is missing. Ensure it is set in the .env file.")
 
-# Initialize Cohere API client
 co = cohere.Client(COHERE_API_KEY)
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# Database connection
 def get_db_connection():
     return pymysql.connect(host="localhost", user="root", password="", database="login", cursorclass=pymysql.cursors.DictCursor)
 
-# Fetch transactions for a specific farmer
 def get_farmer_transactions(farmer_id):
     try:
         conn = get_db_connection()
@@ -36,7 +31,6 @@ def get_farmer_transactions(farmer_id):
         print(f"Database Error: {e}")
         return []
 
-# AI Model for Financial Analysis using Cohere
 def generate_financial_advice(transactions):
     if not transactions:
         return "No transaction data found. Start adding transactions to receive financial advice."
@@ -63,7 +57,6 @@ def generate_financial_advice(transactions):
         print(f"Cohere API Error: {e}")
         return f"Error generating advice: {e}"
 
-# API endpoint to receive transactions and return AI-based suggestions
 @app.route('/get_suggestions', methods=['POST'])
 def get_suggestions():
     try:

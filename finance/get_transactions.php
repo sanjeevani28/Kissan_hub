@@ -2,7 +2,7 @@
 session_start();
 $conn = new mysqli("localhost", "root", "", "login");
 
-$farmer_id = $_SESSION['farmer_id']; // Get farmer ID from session
+$farmer_id = $_SESSION['farmer_id']; 
 
 $stmt = $conn->prepare("SELECT amount, reason, type, date FROM transactions WHERE farmer_id = ?");
 $stmt->bind_param("i", $farmer_id);

@@ -3,7 +3,6 @@ import pandas as pd
 from flask import Flask, render_template, request, jsonify
 import pickle
 
-# Create Flask app
 app = Flask(__name__)
 
 # Load the trained model and scaler
@@ -12,27 +11,23 @@ scaler = pickle.load(open(r"C:/xampp/htdocs/login/Flask/scaler.pkl", 'rb'))
 
 @app.route('/')
 def home():
-    return render_template("soil_AI.html")  # Ensure this file exists in the "templates" folder
+    return render_template("soil_AI.html") 
 
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Get input values from the form
-        float_features = [float(x) for x in request.form.values()]
-        features = np.array(float_features).reshape(1, -1)  # Ensure correct shape
 
-        # Apply scaling
+        float_features = [float(x) for x in request.form.values()]
+        features = np.array(float_features).reshape(1, -1)  
+
         features_scaled = scaler.transform(features)
 
-        # Get probability scores for all crops
         probabilities = model.predict_proba(features_scaled)[0]
 
-        # Get the top 5 crop predictions
         top_n = 5
         top_indices = np.argsort(probabilities)[-top_n:][::-1]
         top_crops = [(model.classes_[i], probabilities[i] * 100) for i in top_indices]
 
-        # Send JSON response with top 5 predictions
         return jsonify({"predictions": top_crops})
 
     except Exception as e:

@@ -6,9 +6,8 @@ if (!isset($_SESSION['farmer_id'])) {
     die(json_encode(["success" => false, "message" => "Unauthorized access"]));
 }
 
-$farmer_id = $_SESSION['farmer_id']; // Get farmer ID dynamically
+$farmer_id = $_SESSION['farmer_id']; 
 
-// Fetch transactions for this farmer from the database
 $query = "SELECT amount, reason, type, date FROM transactions WHERE farmer_id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $farmer_id);
@@ -23,7 +22,6 @@ while ($row = $result->fetch_assoc()) {
 $stmt->close();
 $conn->close();
 
-// Prepare data for Flask API
 $api_url = "http://127.0.0.1:5000/get_suggestions";
 $data = json_encode(["farmer_id" => $farmer_id, "transactions" => $transactions]);
 
@@ -32,12 +30,12 @@ $options = [
         "header" => "Content-Type: application/json",
         "method" => "POST",
         "content" => $data,
-        "timeout" => 5 // Ensure request does not hang
+        "timeout" => 5 
     ]
 ];
 
 $context = stream_context_create($options);
-$response = @file_get_contents($api_url, false, $context); // Use "@" to suppress warnings
+$response = @file_get_contents($api_url, false, $context); 
 
 if ($response === FALSE) {
     die(json_encode(["success" => false, "message" => "Error communicating with AI server"]));

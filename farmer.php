@@ -232,7 +232,6 @@
 
 </div>
 
-<!-- CSS -->
 <style>
 #chatbot-container {
     position: fixed;
@@ -313,7 +312,6 @@
 }
 </style>
 
-<!-- JavaScript -->
 <script>
 document.getElementById("chatbot-btn").addEventListener("click", function() {
     document.getElementById("chatbox").style.display = "block";
@@ -332,7 +330,6 @@ document.getElementById("send-chat").addEventListener("click", function() {
         chatBody.appendChild(userMessage);
         document.getElementById("chat-input").value = "";
 
-        // Simulated chatbot response
         setTimeout(() => {
             let botMessage = document.createElement("p");
             botMessage.textContent = "Chatbot: Thanks for reaching out!";

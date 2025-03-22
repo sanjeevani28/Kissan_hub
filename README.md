@@ -34,8 +34,7 @@ This project aims to provide a comprehensive solution for farmers to optimize cr
 - *Database:* MySQL, XAMPP  
 - *Machine Learning:* Python for AI-based crop prediction  
 - *IoT:* ESP32, moisture and humidity sensors  
-- *Communication:* WhatsApp API for alerts  
+- *Communication:* SMS API for alerts  
 
 ---
 
-## 📁 *Directory Structure*

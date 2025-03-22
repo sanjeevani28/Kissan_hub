@@ -1,7 +1,5 @@
-
-//farmer market
 document.getElementById('productForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault();
 
     let name = document.getElementById('productName').value;
     let quantity = document.getElementById('productQuantity').value;
@@ -31,9 +29,6 @@ document.getElementById('productForm').addEventListener('submit', function(event
     }
 });
 
-  
-  
-  // Function to show selected form
   function showForm1(formId) {
     // Hide all sections
     let sections = document.querySelectorAll('.tab-content');
@@ -45,21 +40,17 @@ document.getElementById('productForm').addEventListener('submit', function(event
     let activeSection = document.getElementById(formId);
     activeSection.style.display = 'block';
   }
-  
-  // Function to fetch and display products for the farmer
+
   function fetch_farmer_Products() {
-    // Assume farmer ID is 1. In a real app, this should be fetched dynamically (session or login system)
     const farmerId = 1;
   
-    // Fetch products from the database for the logged-in farmer
     fetch('fetch_farmer_products.php?farmer_id=' + farmerId)
         .then(response => response.json())
         .then(data => {
             const productList = document.getElementById('productList');
-            productList.innerHTML = ''; // Clear previous content
+            productList.innerHTML = '';
   
             if (data.success) {
-                // Display products in the list
                 data.products.forEach(product => {
                     productList.innerHTML += `
                         <div class="product">
@@ -78,15 +69,14 @@ document.getElementById('productForm').addEventListener('submit', function(event
             console.error('Error fetching products:', error);
         });
   }
-  
-  // Fetch products when the "See Your Products" tab is clicked
+
   document.getElementById('see-products-tab').addEventListener('click', function() {
-    fetch_farmer_Products(); // Call the fetchProducts function when tab is clicked
-    showForm('see-products'); // Show the 'See Your Products' tab content
+    fetch_farmer_Products();
+    showForm('see-products');
   });
 
   function fetchFarmerProducts() {
-    const farmerId = localStorage.getItem('farmer_id'); // Assuming farmer_id is stored in localStorage/session
+    const farmerId = localStorage.getItem('farmer_id');
 
     if (!farmerId) {
         alert("Farmer ID is missing. Please log in again.");
@@ -97,7 +87,7 @@ document.getElementById('productForm').addEventListener('submit', function(event
         .then(response => response.json())
         .then(data => {
             let productContainer = document.getElementById("productList");
-            productContainer.innerHTML = ""; // Clear previous data
+            productContainer.innerHTML = "";
 
             if (data.success) {
                 data.products.forEach(product => {
@@ -119,21 +109,19 @@ document.getElementById('productForm').addEventListener('submit', function(event
             console.error("Error fetching products:", error);
         });
 }
-  
-  // Helper function to show the correct tab content
+
   function showForm(formId) {
     const allForms = document.querySelectorAll('.tab-content');
     allForms.forEach(form => {
-        form.style.display = 'none'; // Hide all forms
+        form.style.display = 'none';
     });
   
     const selectedForm = document.getElementById(formId);
     if (selectedForm) {
-        selectedForm.style.display = 'block'; // Show the selected form
+        selectedForm.style.display = 'block';
     }
   }
-  
-  // Set initial tab (show add product form)
+
   document.getElementById('add-product-tab').addEventListener('click', function() {
     showForm('add-product');
   });
